@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# proj secrets
+client_secret.json
+home-group.conf
