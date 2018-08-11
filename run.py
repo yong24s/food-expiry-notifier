@@ -5,7 +5,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 def notify(mesg):
     print(mesg)
-    os.system('telegram-send --config home-group.conf\"' + mesg + '\"')
+    os.system('telegram-send --config home-group.conf \"' + mesg + '\"')
 
 def check():
     scope = ['https://spreadsheets.google.com/feeds',
@@ -22,14 +22,14 @@ def check():
 
     # Assume that the script will be executed on Monday, then get the date of that day + 6 days
     today = datetime.date.today()
-    six_days_after_today = today + datetime.timedelta(days=6)
+    eight_days_after_today = today + datetime.timedelta(days=8)
 
     items = []
 
     for row, record in enumerate(records):
         item_date = datetime.datetime.strptime(record['DATE'], "%d/%m/%Y").date()
 
-        if item_date < six_days_after_today and record['NOTIFIED'] is not 'T':
+        if item_date <= eight_days_after_today and record['NOTIFIED'] is not 'T':
             items.append(record)
             # Sheet counts from 1 
             # Add additional 1 to skip header row
