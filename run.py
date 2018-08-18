@@ -8,7 +8,7 @@ def notify(mesg):
     os.system('printf \"{}\" | telegram-send --format markdown --config home-group.conf --stdin'.format(mesg))
 
 def print_expiring_items(items, expiring_in_days):
-    print_items(items, 'These items are expiring in the next `{}` days\\n'.format(expiring_in_days))
+    print_items(items, 'These items are expiring in the next \`{}\` days\\n'.format(expiring_in_days))
 
 def print_deleted_items(items):
     print_items(items, "Removed these items from gsheet...\\n")
@@ -22,7 +22,6 @@ def print_items(items, header_mesg, sort=True):
             items.sort(key=lambda r: datetime.datetime.strptime(r['DATE'], "%d/%m/%Y"))
 
         mesg = header_mesg
-        mesg += '\\n'
 
         for item in items:
             mesg += '{} | {}\\n'.format(item['DATE'], item['NAME'])
