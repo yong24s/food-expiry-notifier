@@ -80,5 +80,11 @@ def check():
     print_deleted_items(items_deleted)
     print_error_items(items_without_date_or_name)
 
+    if (len(items_expiring_in_a_month) == 0 
+        and len(items_expiring_in_a_week) == 0 
+        and len(items_deleted) == 0 
+        and len(items_without_date_or_name) == 0):
+        notify('Nothing expiring. See you next week.\\nBye!')
+
 if __name__ == '__main__':
     check()
