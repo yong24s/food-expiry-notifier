@@ -5,7 +5,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 def notify(mesg):
     print(mesg.replace('\\n', '\n'))
-    os.system('printf \"{}\" | /usr/local/bin/telegram-send --format markdown --config home-group.conf --stdin'.format(mesg))
+    os.system('/usr/bin/printf \"{}\" | /usr/local/bin/telegram-send --format markdown --config home-group.conf --stdin'.format(mesg))
 
 def print_expiring_items(items, expiring_in_days):
     print_items(items, 'These items are expiring in the next \`{}\` days\\n'.format(expiring_in_days))
